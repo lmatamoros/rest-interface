@@ -1,0 +1,1 @@
+# Interfaz para consumo de métodos de petición HTTP

@@ -1,0 +1,25 @@
+{
+  "name": "rest-interface",
+  "version": "1.0.0",
+  "description": "Interfaz para consumo de métodos de petición HTTP",
+  "main": "index.js",
+  "filename": "LICENSE.md",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmatamoros/rest-interface.git"
+  },
+  "author": "luis.matamoros@efika.solutions",
+  "license": "SEE LICENSE IN <filename>",
+  "bugs": {
+    "url": "https://github.com/lmatamoros/rest-interface/issues"
+  },
+  "private": true,
+  "homepage": "https://github.com/lmatamoros/rest-interface#README",
+  "dependencies": {
+    "node-rest-client": "git+https://github.com/lmatamoros/node-rest-client.git",
+    "request": "2.87.0"
+  }
+}
