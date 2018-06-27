@@ -21,11 +21,23 @@ var PostMethod = function () {
 
 PostMethod.prototype.execute = function (url, form, callback, resArgs) {
     let self = this
-    self.restClient.post(url, {
+    let req = self.restClient.post(url, {
         "data": form,
         "headers": {"Content-Type": "application/json"}
     }, function (data, response) {
         callback(null, response.statusCode, data, resArgs)
+    })
+
+    req.on("requestTimeout", function (req) {
+        callback("RequestTimeout", 500, null, resArgs)
+    })
+     
+    req.on("responseTimeout", function (res) {
+        callback("Response Timeout", 500, null, resArgs)
+    })
+    
+    req.on("error", function (err) {
+        callback(err, 500, null, resArgs)
     })
 }
 

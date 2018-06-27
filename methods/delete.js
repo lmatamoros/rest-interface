@@ -21,11 +21,23 @@ var DeleteMethod = function () {
 
 DeleteMethod.prototype.execute = function (url, form, callback, resArgs) {
     let self = this
-    self.restClient.delete(url, {
+    let req = self.restClient.delete(url, {
         "data": form,
         "headers": {"Content-Type": "application/json"}
     }, function (data, response) {
         callback(null, response.statusCode, data, resArgs)
+    })
+
+    req.on("requestTimeout", function (req) {
+        callback("RequestTimeout", 500, null, resArgs)
+    })
+     
+    req.on("responseTimeout", function (res) {
+        callback("Response Timeout", 500, null, resArgs)
+    })
+    
+    req.on("error", function (err) {
+        callback(err, 500, null, resArgs)
     })
 }
 
